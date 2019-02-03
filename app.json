@@ -1,0 +1,44 @@
+{
+  "pages":[
+    "pages/order/orderlist/orderlist",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+
+  "tabBar": {
+    "selectedColor": "#1296db",
+    "list": [
+      {
+        "pagePath": "pages/order/orderlist/orderlist",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home2.png"
+      },
+      {
+        "pagePath": "pages/order/orderlist/orderlist",
+        "text": "分析",
+        "iconPath": "images/barchart.png",
+        "selectedIconPath": "images/barchart2.png"
+      },
+      {
+        "pagePath": "pages/order/orderlist/orderlist",
+        "text": "用户",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user2.png"
+      },            
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "日志",
+        "iconPath": "images/solution.png",
+        "selectedIconPath": "images/solution2.png"   
+      }
+    ]
+  },
+
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#1296db",
+    "navigationBarTitleText": "永利喷涂管理系统",
+    "navigationBarTextStyle":"#fffff"
+  }
+}

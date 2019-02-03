@@ -1,0 +1,42 @@
+<!-- 引入wxs脚本 -->
+<wxs src="../../../wxs/subutil.wxs" module="tools" />
+
+<view class='listbox'>
+  <!-- 循环列表 -->
+  <!-- <view class='item'>
+      <view class='icondate'>10</view>
+      <view class='sb'>
+        <view class='connet'>
+          <view class='title'>
+            <text class='vip'>圣蕾克</text>
+          </view>
+          <view class='list'>
+            <text> 铝材</text>
+            <text> YG-1001砂银</text>
+            <text> 1568.5KG</text>
+          </view>
+        </view>
+        <view class="icon iconfont icon-gengduo"> </view>       
+      </view>
+  </view> -->
+  <!-- end    -->
+    <!-- 循环列表 -->
+  <view  class='item'  wx:for="{{orderinfo.order}}" wx:for-index="order_id" wx:key="*this" wx:for-item="orderinfo">
+      <!-- <view class='icondate' style="background-color:{{randomColor}}">{{tools.getDate(orderinfo.in_date)}}</view> -->
+      <view class='icondate' style="background-color:{{tools.getcolor(tools.getDate(orderinfo.in_date))}}">{{tools.getDate(orderinfo.in_date)}}</view>
+      <view class='sb'>
+        <view class='connet'>
+          <view class='title'>
+            <text class='vip'>{{orderinfo.consumer_name}}</text>
+          </view>
+          <view class='list'>
+            <text>{{orderinfo.pt_name}}</text>
+            <text>{{orderinfo.color_no}}{{orderinfo.color_name}}</text>
+            <text>{{orderinfo.qty}}{{orderinfo.pt_unit}}</text>
+          </view>
+        </view>
+        <view class="icon iconfont icon-gengduo"> </view>       
+      </view>
+  </view>
+  <!-- end    -->
+</view>
