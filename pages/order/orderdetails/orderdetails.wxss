@@ -1,0 +1,71 @@
+.box{
+  width: 100%;
+  height: auto;
+  font-size: 15px;
+  margin-top:40px;
+}
+
+.item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+  padding:5px;
+  height: 30px;
+  line-height: 30px;
+  background-color: #393D49; 
+  font-size: 15px;
+  color: #FFF;
+  position:fixed;
+  width: 100%;
+  top:0;
+  z-index: 999;
+}
+.consumer_name{
+  background-color: #FF5722;
+  padding: 0px 5px;
+  border-radius: 2px;
+}
+.list{
+  display: flex;
+  flex-direction: row;
+  padding: 5px auto;
+  /* border-bottom: 1px solid #e8e8e8; */
+  border-bottom: 1px dashed #cecece;
+  justify-content: start;
+}
+.img{
+  width: 120px;
+  height: 64px;
+  padding: 2px;
+  margin: 2px;
+  border: 1px solid #e8e8e8;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.pname{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 2px;
+  padding: 2px;
+}
+.sty{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.title{
+  color: #FFF;
+  padding: 1px 2px;
+  border-radius: 2px;
+  background-color: rgb(6, 127, 226);
+}
+ .connet{
+   margin-left: 2px;
+ }
+
+ .invoices_img{
+   width: 100%;
+ }
+ 

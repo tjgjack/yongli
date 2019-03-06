@@ -1,0 +1,53 @@
+<view class='box'>
+  <view class="content">
+    <view class="date-t t_date mt-10">
+      <!-- 今天 -->
+      <view class="title">今日收货统计</view>
+      <view wx:if="{{t_count_Info}}" class="count" id="t_count">
+
+        <view wx:if="{{t_count_Info.penqi}}" class="list">
+          <text>喷漆：{{t_count_Info.penqi}}KG</text>
+        </view>
+        <view wx:if="{{t_count_Info.pensu}}" class="list">
+          <text>喷塑：{{t_count_Info.pensu}}KG</text>
+        </view>
+        <view wx:if="{{t_count_Info.lvban}}" class="list">
+          <text>铝板：{{t_count_Info.lvban}}张</text>
+        </view>
+        <view wx:if="{{t_count_Info.suliaoban}}" class="list">
+          <text>塑料板：{{t_count_Info.suliaoban}}张</text>
+        </view>
+      </view>
+    </view>
+    <view class="date-y y_date mt-10">
+      <!-- 昨天 -->
+      <view class="title">昨日收货统计</view>
+            <view wx:if="{{y_count_Info}}" class="count" id="y_count">
+
+        <view wx:if="{{y_count_Info.penqi}}" class="list">
+          <text>喷漆：{{y_count_Info.penqi}}KG</text>
+        </view>
+        <view wx:if="{{y_count_Info.pensu}}" class="list">
+          <text>喷塑：{{y_count_Info.pensu}}KG</text>
+        </view>
+        <view wx:if="{{y_count_Info.lvban}}" class="list">
+          <text>铝板：{{y_count_Info.lvban}}张</text>
+        </view>
+        <view wx:if="{{y_count_Info.suliaoban}}" class="list">
+          <text>塑料板：{{y_count_Info.suliaoban}}张</text>
+        </view>
+      </view>
+    </view>
+    <view class="mt-10" style="border: 2px solid #FF5722; border-radius: 4px; text-align: left;">
+      <text style="font-size: 30px;color: #FFFFFF;background-color:#FF5722;padding: 2px;">本月订单</text>
+      <!-- 数字动画累加 -->
+      <text id="lines" class="lines" style="margin-left: 10px;">{{m_count_Info}}</text>
+      <text class="lines">KG</text>
+    </view>
+    <!-- 月产量分析图 -->
+    <view class="container" style="width: 100%;height: 500px;">
+    <!-- <view class='echartitle'>前12月订单数量分析表</view> -->
+      <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>  
+    </view>
+  </view>
+</view>

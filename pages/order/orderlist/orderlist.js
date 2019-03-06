@@ -1,4 +1,5 @@
 const app = getApp()
+var num =30
 Page({
 
   /**
@@ -6,14 +7,6 @@ Page({
    */
   data: {
     orderinfo:null,
-    // 自定义自己喜欢的颜色
-    colorArr: ["#EE2C2C", "#ff7070", "#EEC900", "#4876FF", "#ff6100",
-      "#7DC67D", "#E17572", "#7898AA", "#C35CFF", "#33BCBA", "#C28F5C",
-      "#FF8533", "#6E6E6E", "#428BCA", "#5cb85c", "#FF674F", "#E9967A",
-      "#66CDAA", "#00CED1", "#9F79EE", "#CD3333", "#FFC125", "#32CD32",
-      "#00BFFF", "#68A2D5", "#FF69B4", "#DB7093", "#CD3278", "#607B8B"],
-    // 存储随机颜色
-    randomColor: []
   },
 
   /**
@@ -23,23 +16,18 @@ Page({
     var thispage = this
     app.getOrderInfo(function(data){
       // console.log(data)
-      thispage.setData({orderinfo:data})
-      var dataLen = 10;
-      // 必须经过第三方变量接收才能使用
-      var len = thispage.data.colorArr.length;
-      var arr = thispage.data.colorArr;
-      var newArr = [];
-      // 不能只执行一次，要执行多次(dataArr.length次)
-      //要获取跟数据同等个数的随机颜色值
-
-        // 获取随机颜色
-        var random = arr[Math.floor(Math.random() * len)];
-        newArr.push(random);
-
-      // 将随机颜色数组赋值给randomColor
-      thispage.setData({ randomColor: newArr });
+      thispage.setData({orderinfo:data.order}) 
     })
 
+  },
+
+  // 跳转详情页
+  orderDetail:function(event){
+    // console.log(event)
+    var orderid = event.currentTarget.dataset.orderid
+    wx.navigateTo({
+      url: '../orderdetails/orderdetails?orderid='+orderid,
+    })
   },
 
   /**
@@ -74,14 +62,53 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+    // 显示顶部刷新图标
+    wx.showNavigationBarLoading();
+    var thispage = this
+    app.getOrderInfo(function (data) {
+      // console.log(data.order)
+      thispage.setData({ orderinfo: data.order })
+      num = 30
+      // 隐藏导航栏加载框
+      wx.hideNavigationBarLoading();
+      // 停止下拉动作
+      wx.stopPullDownRefresh();
+    })    
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+    var that = this;
+    // 显示加载图标
+    wx.showLoading({
+      title: '玩命加载中',
+    })
+    // 页数+1
+    var startnum = num + 1
+    wx.request({
+      url: 'https://erp.yonglipentu.cn/index.php/Home/App/api_order?Num=' + num +'&skip=30',
+      method: "GET",
+      // 请求头部
+      header: {
+        'content-type': 'application/text'
+      },
+      success: function (res) {
+        // 回调函数
+        var dataArr = that.data.orderinfo;
+        var newData = dataArr.concat(res.data.order)
+        // console.log(newData)
+        console.log(startnum)
+        // 设置数据
+        that.setData({
+           orderinfo: newData
+        })
+        // 隐藏加载框
+        wx.hideLoading();
+      }
+    })
+    num = num + 30
   },
 
   /**

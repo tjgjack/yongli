@@ -19,7 +19,21 @@ var getcolor = function(n){
   return colorArr.slice(n-1, n);
 }
 
+//字符串截取
+var sub = function (val) {
+  if (val.length == 0 || val == undefined) {
+    return;
+  }
+  if (val.length > 8) {
+    return val.substring(0,8);
+    // return val.substring(0, 4) + "...";
+  } else {
+    return val;
+  }
+}
+
 module.exports = {
   getcolor: getcolor,
-  getDate:  getDate
+  getDate:  getDate,
+  sub:sub
 }

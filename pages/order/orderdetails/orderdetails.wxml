@@ -1,0 +1,39 @@
+<view class='box'>
+    <view class='item'>
+      <text class='consumer_name'>{{orderdetail.consumer_name}}</text>
+      <text>{{orderdetail.color_no}}{{orderdetail.color_name}}</text>
+      <text>{{orderdetail.qty}}{{orderdetail.pt_unit}}</text>
+      <text style='margin-right:10px;'>{{orderdetail.in_date}}</text>
+    </view>
+    <!-- 循环订单详情 -->
+    <scroll-view>
+    <view wx:for="{{orderdetail.list}}" wx:key="{{item}}" wx:for-item="list" wx:for-index="listindex" class='list'>
+      <image class='img' src='https://erp.yonglipentu.cn/Public/upload/{{list.goods_img}}'></image>
+      <view class='pname'>
+        <view class='sty'>
+          <view>
+            <text class='title'>品名</text>
+            <text class='connet'>{{list.goods_remark}}</text>
+          </view>
+          <view>
+            <text class='title' style='background-color:#DDD;'>M</text>
+            <text class='connet' style='color:#DDD;'>{{list.goods_name}}</text>     
+          </view>
+        </view>
+        <view>
+          <text class='title'>数量</text>
+          <text class='connet'>{{list.list_sl}}</text>
+        </view> 
+        <view>
+          <text class='title'>备注</text>
+          <text class='connet' style='color:red;'>{{list.list_remark}}</text>    
+        </view>       
+      </view>
+    </view>
+    <button type='primary' data-consumer_id='{{orderdetail.consumer_id}}' data-in_date='{{orderdetail.in_date}}' style='margin:5px;' bindtap='showInvoices'>点击查看客户票据</button>
+    <view wx:for='{{invoices_info}}' wx:key='{{item}}' wx:for-item='invoices' style='margin:0px 5px;'>
+      <image src='https://erp.yonglipentu.cn/Public/invoices_uploads/{{invoices.invoices_image}}' bindtap="previewImage" data-src="https://erp.yonglipentu.cn/Public/invoices_uploads/{{invoices.invoices_image}}"  mode='widthFix'  class='invoices_img'></image>
+      <!-- <view>{{invoices.invoices_image}}</view> -->
+    </view>
+    </scroll-view>
+</view>

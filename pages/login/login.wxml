@@ -1,0 +1,32 @@
+<!--pages/login/login.wxml-->
+  <view wx:if="{{userinfo}}">
+    <view class='header'>
+      <image src='{{userinfo.avatarurl}}'></image>
+    </view>
+    <view class='msg'>
+      <icon type="warn" size="40" />
+      <view>{{message}}</view>
+    </view>
+    <view class='userinfo'>
+      <view>
+        <text class='title'>用户名：</text>
+        <text class='content'>{{userinfo.nickname}}</text>
+      </view>
+      <view>
+        <text class='title'>省份：</text>
+        <text class='content'>{{userinfo.province}}</text>
+      </view>
+      <view>
+        <text class='title'>城市：</text>
+        <text class='content'>{{userinfo.city}}</text>
+      </view>
+      <view>
+        <text class='title'>uid:</text>
+        <text class='content'>{{userinfo.uid}}</text>
+      </view>
+      <view>
+        <text class='title'>status:</text>
+        <text class='content'>{{userinfo.status}}</text>
+      </view>
+    </view>
+  </view>
